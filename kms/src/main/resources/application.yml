@@ -1,10 +1,12 @@
-# server
 server:
-  port: 8090
-  
+  port: 8081
+
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://61.34.174.13:33306/test_ih?serverTimezone=UTC&characterEncoding=UTF-8
-    username: root
-    password: next1212
+  profiles:
+    active: local
+
+mybatis:
+  configuration:
+    # snake case to camel case
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:/mapper/**/*SQL.xml
