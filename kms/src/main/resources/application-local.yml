@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    hikari:
+     driver-class-name: com.mysql.cj.jdbc.Driver
+     jdbc-url: jdbc:mysql://61.34.174.13:33306/test_ih2?serverTimezone=UTC&characterEncoding=UTF-8
+     username: root
+     password: next1212
+
+logging:
+  level:
+    root: info
+    '[org.springframework]': info
+    '[com.stupig]': debug
+    '[org.mybatis.spring.transaction.SpringManagedTransaction]': debug
+    '[org.mybatis.spring.SqlSessionUtils]': debug

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.kms.user.mapper.SignMapper">
+    <select id="selectUserInfoById"
+            parameterType="java.lang.String"
+            resultType="com.example.kms.user.vo.UserMgmtRVO"
+    >
+        SELECT /* SignSQL.xml selectUserInfoById */
+               A.idx
+              ,A.id
+              ,A.password
+              ,A.pw_expire_datetime
+              ,A.pw_wrong_count
+              ,A.name
+              ,A.comp_name
+              ,A.comp_id
+              ,A.phone
+              ,A.email
+              ,A.group_seq
+              ,A.auth
+              ,A.approve_user_seq
+              ,A.approve_datetime
+          FROM user_m A
+         WHERE A.id = #{id}
+    </select>
+
+    <update id="updatePasswordCount" parameterType="com.example.kms.user.vo.UserMgmtPVO">
+        UPDATE /* SignSQL.xml updatePasswordCount */
+               user_m A
+           SET A.pw_wrong_count = #{pwWrongCount}
+              ,A.last_operator = #{lastOperator}
+         WHERE A.idx = #{idx}
+    </update>
+
+    <insert id="insertUser" parameterType="com.example.kms.user.vo.UserMgmtPVO">
+        INSERT /* SignSQL.xml insertUser */
+          INTO user_m
+             (
+               id
+              ,password
+              ,name
+              ,comp_name
+              ,comp_id
+              ,phone
+              ,email
+              ,first_operator
+              ,last_operator
+             )
+        VALUES
+             (
+               #{id}
+              ,#{password}
+              ,#{name}
+              ,#{comp_name}
+              ,#{comp_id}
+              ,#{phone}
+              ,#{email}
+              ,#{firstOperator}
+              ,#{lastOperator}
+             )
+    </insert>
+
+    <select id="selectUserInfo" parameterType="java.lang.Long" resultType="com.example.kms.user.vo.UserMgmtRVO">
+        SELECT /* SignSQL.xml selectUserInfo */
+               A.idx
+              ,A.id
+              ,A.password
+              ,A.pw_expire_datetime
+              ,A.pw_wrong_count
+              ,A.name
+              ,A.comp_name
+              ,A.comp_id
+              ,A.phone
+              ,A.email
+              ,A.group_seq
+              ,A.auth
+              ,A.approve_user_seq
+              ,A.approve_datetime
+          FROM user_m A
+         WHERE A.idx = #{idx}
+    </select>
+  
+    <select id="selectUserList" resultType="com.example.kms.user.vo.sign.SignUpList">
+        SELECT /* SignSQL.xml selectUserList */
+              `idx`
+              ,id
+              ,name
+              ,comp_name
+              ,comp_id
+              ,phone
+              ,email
+          FROM user_m LIMIT #{value}, #{row_count}
+    </select>
+    
+    
+
+    <update id="signConfirm" parameterType="com.example.kms.user.vo.UserMgmtPVO">
+        UPDATE /* SignSQL.xml signConfirm */
+               user_m A
+           SET A.approve_user_seq = #{approveUserSeq}
+              ,A.approve_datetime = #{approveDatetime}
+               <if test='groupSeq != null'>
+                   ,A.group_seq = #{groupSeq}
+               </if>
+              ,A.auth = #{auth}
+              ,A.last_operator = #{lastOperator}
+         WHERE A.idx = #{idx}
+    </update>
+</mapper>

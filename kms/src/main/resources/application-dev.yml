@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    hikari:
+      driver-class-name: org.mariadb.jdbc.Driver
+      jdbc-url:
+      username:
+      password:
+
+logging:
+  level:
+    root: info
+    '[org.springframework]': info
+    '[com.stupig]': debug
+    '[org.mybatis.spring.transaction.SpringManagedTransaction]': debug
+    '[org.mybatis.spring.SqlSessionUtils]': debug
