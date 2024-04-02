@@ -1,10 +1,9 @@
 spring:
   datasource:
-    hikari:
-      driver-class-name: org.mariadb.jdbc.Driver
-      jdbc-url:
-      username:
-      password:
+    driver-class-name: org.mariadb.jdbc.Driver
+    jdbc-url:
+    username:
+    password:
 
 logging:
   level:
