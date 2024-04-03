@@ -24,6 +24,7 @@ public class UserCacheInterceptor implements HandlerInterceptor {
     public UserCacheInterceptor(UserCacheResource userCacheResource, SessionService sessionService) {
         this.userCacheResource = userCacheResource;
         this.sessionService = sessionService;
+        System.out.println("실행 위치 확인용 Interceptor");
     }
 
     @Override

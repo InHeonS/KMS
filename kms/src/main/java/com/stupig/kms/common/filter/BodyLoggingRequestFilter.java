@@ -18,7 +18,7 @@ public class BodyLoggingRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         if (request instanceof ReadableHttpServletRequestWrapper) {
             ReadableHttpServletRequestWrapper cachingRequest = (ReadableHttpServletRequestWrapper) request;
-
+            System.out.println("실행 위치 확인용 BodyLoggingRequestFilter");
             String requestHttpMethod = request.getMethod();
             String requestPath = request.getRequestURI();
             int requestLength = cachingRequest.getContentLength();

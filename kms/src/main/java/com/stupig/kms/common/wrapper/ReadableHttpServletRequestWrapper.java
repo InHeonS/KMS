@@ -26,14 +26,15 @@ public class ReadableHttpServletRequestWrapper extends HttpServletRequestWrapper
     public ReadableHttpServletRequestWrapper(HttpServletRequest request) {
         super(request);
         this.params.putAll(request.getParameterMap()); // 원래의 파라미터를 저장
-
+        System.out.println("params : "+ request.getParameterMap());	//  org.apache.catalina.util.ParameterMap@27294bbf
         String charEncoding = request.getCharacterEncoding(); // 인코딩 설정
+        System.out.println("charEncoding : "+ request.getCharacterEncoding());	// UTF-8
         this.encoding = StringUtils.hasText(charEncoding) ? Charset.forName(charEncoding) : StandardCharsets.UTF_8;
-
+        System.out.println("encoding : "+encoding);	// UTF-8
         try {
             InputStream is = request.getInputStream();
             this.rawData = IOUtils.toByteArray(is); // InputStream 을 별도로 저장한 다음 getReader() 에서 새 스트림으로 생성
-
+            System.out.println("rawData : "+ IOUtils.toByteArray(is));	// [B@71d71f35
         } catch (Exception e) {
             log.error("ReadableRequestWrapper init error", e);
         }

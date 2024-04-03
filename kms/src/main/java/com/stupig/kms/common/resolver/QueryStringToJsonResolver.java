@@ -16,10 +16,11 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 public class QueryStringToJsonResolver implements HandlerMethodArgumentResolver {
 
     private final ObjectMapper objectMapper;
-
+    
     @Autowired
     public QueryStringToJsonResolver(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
+        System.out.println("실행 위치 확인용 resolver");
     }
 
     @Override

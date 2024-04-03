@@ -40,11 +40,12 @@ public class IOUtils {
     public static byte[] toByteArray(InputStream input) throws IOException {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Throwable var2 = null;
-
+        
         byte[] var3;
         try {
             copy((InputStream)input, (OutputStream)output);
             var3 = output.toByteArray();
+            System.out.println("var3 : " + var3);
         } catch (Throwable var12) {
             var2 = var12;
             throw var12;

@@ -33,7 +33,7 @@ public class SignController {
     @PostMapping("/signIn")
     public ResponseVO<Void> signIn(@RequestBody SignPVO pvo) {
         ResponseVO<Void> response = new ResponseVO<>();
-
+        System.out.println("실행 위치 확인용 controller");
         if (StringUtils.isAnyNullOrBlank(pvo.getId(), pvo.getPassword())) {
             response.setResponse(ResponseCode.INVALID_PARAMETER);
             return response;

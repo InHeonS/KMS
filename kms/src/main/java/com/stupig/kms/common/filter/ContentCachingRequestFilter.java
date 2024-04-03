@@ -17,6 +17,7 @@ public class ContentCachingRequestFilter extends OncePerRequestFilter {
         ReadableHttpServletRequestWrapper wrappingRequest = request instanceof ReadableHttpServletRequestWrapper ? (ReadableHttpServletRequestWrapper) request : new ReadableHttpServletRequestWrapper(request);
         ContentCachingResponseWrapper wrappingResponse = response instanceof ContentCachingResponseWrapper ? (ContentCachingResponseWrapper) response : new ContentCachingResponseWrapper(response);
         filterChain.doFilter(wrappingRequest, wrappingResponse);
+        System.out.println("실행 위치 확인용 ContentCachingRequestFilter");
         wrappingResponse.copyBodyToResponse();
     }
 }
