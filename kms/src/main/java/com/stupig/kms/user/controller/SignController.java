@@ -142,19 +142,4 @@ public class SignController {
         return response;
     }
     
-    /**
-     * U0000
-     * POST /api/user/signUpList
-     *
-     * @param pvo
-     * @return
-     */
-    @PostMapping("/test")
-    public ResponseListVO<SignUpListRVO> test(@QueryStringToJson SignUpListPVO pvo) {
-        ResponseListVO<SignUpListRVO> response = new ResponseListVO<>();
-        
-        response = signService.test(pvo, response);
-
-        return response;
-    }
 }

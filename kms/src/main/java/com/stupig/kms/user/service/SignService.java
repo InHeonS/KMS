@@ -240,26 +240,6 @@ public class SignService {
 
         return response;
     }
-    
-    
-    public ResponseListVO<SignUpListRVO> test(SignUpListPVO pvo, ResponseListVO<SignUpListRVO> response) {
-        // 1. Page 처리
-        if (pvo.getPage() == null) {
-            pvo.setPage(1);
-        }
-        if (pvo.getRowCount() == null) {
-            pvo.setRowCount(20);
-        }
-
-        // 2. Set Response
-        response.setData(signMapper.selectSignUpList(pvo));
-        response.setTotalCount(signMapper.selectSignUpListCount(pvo));
-        response.setPage(pvo.getPage());
-        response.setRowCount(pvo.getRowCount());
-        response.setSuccess();
-
-        return response;
-    }
 
     /**
      * [Method]
